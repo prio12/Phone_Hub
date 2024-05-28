@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { logout, user } = useAuth();
+  const handleLogout = async()=>{
+    await logout()
+  }
   return (
     <div className="navbar  bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
       <div className="navbar-start">
@@ -56,9 +61,13 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link className="pr-3 text-xs font-bold" to="/logIn">
+        {
+          user? <button onClick={handleLogout} className="btn text-white btn-outline">
+            Log Out
+          </button> : <Link className="pr-3 text-xs font-bold" to="/logIn">
           Log in
         </Link>
+        }
       </div>
     </div>
   );
