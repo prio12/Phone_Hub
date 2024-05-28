@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 // eslint-disable-next-line react/prop-types
 const SingleProduct = ({ phone,onDelete }) => {
   // eslint-disable-next-line react/prop-types
@@ -7,18 +8,36 @@ const SingleProduct = ({ phone,onDelete }) => {
   const { pathname } = useLocation();
 
   const handleDelete = async () => {
-    await fetch(`http://localhost:3000/phones/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        onDelete(id);
-      });
-  };
+    // Display confirmation dialog
+    const confirmed = window.confirm("Are you sure you want to delete this product?");
+
+    if (confirmed) {
+        try {
+            const response = await fetch(`http://localhost:3000/phones/${id}`, {
+                method: "DELETE",
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log(responseData);
+                onDelete(id);
+                toast.success('Product deleted successfully!');
+            } else {
+                throw new Error("Failed to delete product");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    } else {
+        // User cancelled, do nothing
+        console.log("User cancelled");
+    }
+};
+
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
+      <ToastContainer/>
       <figure>
         <img src={image_url} alt="Phone" />
       </figure>
