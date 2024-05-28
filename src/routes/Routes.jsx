@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import ProductDetails from "../components/ProductDetails";
 import LogIn from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
+import DashBoard from "../pages/Dashboard/DashBoard";
+import AddProduct from "../pages/Dashboard/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,15 @@ const router = createBrowserRouter([
       {
         path:"/signUp",
         element:<SignUp></SignUp>
+      },
+      {
+        path:"/dashboard",
+        element:<DashBoard></DashBoard>,
+        loader: () => fetch("http://localhost:3000/phones"),
+      },
+      {
+        path:"/addProduct",
+        element:<AddProduct></AddProduct>
       }
     ],
   },
