@@ -1,4 +1,4 @@
-import { useLoaderData, useLocation } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import UserProfile from "./UserProfile";
 import Products from "../../components/Products";
 

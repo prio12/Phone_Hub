@@ -7,6 +7,8 @@ import SignUp from "../pages/SignUp";
 import DashBoard from "../pages/Dashboard/DashBoard";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import EditProduct from "../pages/Dashboard/EditProduct";
+import About from "../pages/About";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,10 @@ const router = createBrowserRouter([
           fetch(`http://localhost:3000/phones/${params.id}`),
       },
       {
+        path:"/about",
+        element:<About></About>
+      },
+      {
         path:"/logIn",
         element:<LogIn></LogIn>
       },
@@ -34,16 +40,16 @@ const router = createBrowserRouter([
       },
       {
         path:"/dashboard",
-        element:<DashBoard></DashBoard>,
+        element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         loader: () => fetch("http://localhost:3000/phones"),
       },
       {
         path:"/addProduct",
-        element:<AddProduct></AddProduct>
+        element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
         path:"/editProduct/:id",
-        element:<EditProduct></EditProduct>,
+        element:<PrivateRoute><EditProduct></EditProduct></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/phones/${params.id}`),
       }

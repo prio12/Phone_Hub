@@ -7,6 +7,7 @@ const Products = ({ data }) => {
   const [products, setProducts] = useState(data);
 
   const handleDeleteProduct = (id) => {
+    // eslint-disable-next-line react/prop-types
     setProducts(data?.filter((product) => product.id !== id));
   };
   return (
