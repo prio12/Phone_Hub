@@ -1,12 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const SingleProduct = ({phone}) => {
-    // eslint-disable-next-line react/prop-types
-    const { id, title, brand, price, description, image_url } = phone;
-    const {pathname} = useLocation();
-    return (
-      <div className="card w-96 bg-base-100 shadow-xl">
+const SingleProduct = ({ phone }) => {
+  // eslint-disable-next-line react/prop-types
+  const { id, title, brand, price, description, image_url } = phone;
+  const { pathname } = useLocation();
+  return (
+    <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
         <img src={image_url} alt="Phone" />
       </figure>
@@ -21,14 +21,17 @@ const SingleProduct = ({phone}) => {
           </button>
           {pathname === "/dashboard" && (
             <div className="flex w-full justify-between mt-4">
-              <button className="btn bg-green-500">Edit</button>
+              {/* <button className="btn bg-green-500">Edit</button> */}
+              <button className="btn bg-green-600 text-white">
+                <Link to={`/editProduct/${id}`}>Edit</Link>
+              </button>
               <button className="btn bg-red-500">Delete</button>
             </div>
           )}
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default SingleProduct;

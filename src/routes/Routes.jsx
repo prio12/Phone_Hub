@@ -6,6 +6,7 @@ import LogIn from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 import DashBoard from "../pages/Dashboard/DashBoard";
 import AddProduct from "../pages/Dashboard/AddProduct";
+import EditProduct from "../pages/Dashboard/EditProduct";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
       {
         path:"/addProduct",
         element:<AddProduct></AddProduct>
+      },
+      {
+        path:"/editProduct/:id",
+        element:<EditProduct></EditProduct>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/phones/${params.id}`),
       }
     ],
   },

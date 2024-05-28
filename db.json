@@ -10,9 +10,9 @@
     },
     {
       "id": "2",
-      "title": "iPhone 13 Pro Max",
+      "title": "iPhone 13 Pro Maxxxxx",
       "brand": "Apple",
-      "price": 1099,
+      "price": "1099",
       "description": "The Apple iPhone 13 Pro Max offers a pro-level camera system, 5G capability, and the powerful A15 Bionic chip for seamless performance.",
       "image_url": "https://images.unsplash.com/photo-1672906674630-67866460f965?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGlQaG9uZSUyMDEzJTIwUHJvJTIwTWF4fGVufDB8fDB8fHww"
     },
@@ -42,7 +42,7 @@
     },
     {
       "id": "6",
-      "title": "oppo 5",
+      "title": "oppo 5 ahh ahh",
       "brand": "oppo",
       "price": "21",
       "description": "nice phone",
